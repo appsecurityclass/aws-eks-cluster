@@ -68,64 +68,11 @@ We need to configure `kubectl` so it knows how to authenticate and connect to yo
 
 To create your kubeconfig file:
 
-1.) Create the default ~/.kube directory if it does not already exist.
 ```
-mkdir -p ~/.kube
-```
-
-2.) Open your favorite text editor and copy the kubeconfig code block below into it.
-```
-apiVersion: v1
-clusters:
-- cluster:
-    server: <endpoint-url>
-    certificate-authority-data: <base64-encoded-ca-cert>
-  name: kubernetes
-contexts:
-- context:
-    cluster: kubernetes
-    user: aws
-  name: aws
-current-context: aws
-kind: Config
-preferences: {}
-users:
-- name: aws
-  user:
-    exec:
-      apiVersion: client.authentication.k8s.io/v1alpha1
-      command: heptio-authenticator-aws
-      args:
-        - "token"
-        - "-i"
-        - "<cluster-name>"
-        # - "-r"
-        # - "<role-arn>"
-      # env:
-        # - name: AWS_PROFILE
-        #   value: "<aws-profile>"
+aws eks --region region update-kubeconfig --name cluster_name
 ```
 
-3.) Replace the `<endpoint-url>` with the endpoint URL that was created for your cluster.  This will be the `ClusterEndpoint` output from the cluster stack.
 
-4.) Replace the `<base64-encoded-ca-cert>` with the certificateAuthority.data that was created for your cluster.  Log into your aws account and copy this value from your new EKS cluster.
-
-5.) Replace the `<cluster-name>` with your cluster name.  This will be the `ClusterName` output from the cluster stack.
-
-6.) (Optional) To have the Heptio authenticator assume a role to perform cluster operations (instead of the default AWS credential provider chain), uncomment the -r and `<role-arn>` lines and substitute an IAM role ARN to use with your user.  
-
-7.) (Optional) To have the Heptio authenticator always use a specific named AWS credential profile (instead of the default AWS credential provider chain), uncomment the env lines and substitute `<aws-profile>` with the profile name to use.
-
-8.) Save the file to the default kubectl folder, with your cluster name in the file name. For example, if your cluster name is `<cluster-name>`, save the file to ~/.kube/config-`<cluster-name>`.
-
-9.) Add that file path to your KUBECONFIG environment variable so that kubectl knows where to look for your cluster configuration.
-```
-export KUBECONFIG=$KUBECONFIG:~/.kube/config-<cluster-name>
-```
-
-10.) (Optional) Add the configuration to your shell initialization file so that it is configured when you open a shell.
-
-11.) Test your configuration.
 ```
 kubectl get svc
 ```

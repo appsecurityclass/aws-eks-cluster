@@ -1,0 +1,25 @@
+VPC
+---------------------------------------------------------
+Stack has been created!
+PublicSubnet2CIDR = 10.0.144.0/20
+PublicSubnet1ID = subnet-0a72c10fd5bb9f861
+VPCID = vpc-033bfd2ded62301c0
+PublicSubnet2ID = subnet-00ff70f64f38e2e7d
+VPCCIDR = 10.0.0.0/16
+PublicSubnetRouteTable = rtb-0034976002c93e08e
+PublicSubnet1CIDR = 10.0.128.0/20
+
+CLUSTER
+----------------------------------------------------------
+Stack has been created!
+ClusterArn = arn:aws:eks:us-east-1:115730246820:cluster/Cluster-oxDwULwzVDvC
+ClusterControlPlaneSecurityGroup = sg-0413506abd228a604
+ClusterName = Cluster-oxDwULwzVDvC
+ClusterEndpoint = https://4A4B805B9F9D3D8EE77A8065D5BA776B.gr7.us-east-1.eks.amazonaws.com
+
+
+NODES
+----------------------------------------------------------
+Stack has been created!
+NodeInstanceRole = arn:aws:iam::115730246820:role/eks-nodes-NodeInstanceRole-1L10AH2T1AE1E
+

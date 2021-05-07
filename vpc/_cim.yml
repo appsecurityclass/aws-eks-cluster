@@ -3,13 +3,13 @@ stack:
   name: eks-vpc # Note: Update this with your stack name
   template:
     file: vpc.stack.yml
-    bucket: cim-stack-artifacts # Note: Update this with your bucket name.  Stacks are uploaded here prior to deployment.'
+    bucket: cloudpack-artifacts-cr # Note: Update this with your bucket name.  Stacks are uploaded here prior to deployment.'
 
   #
   # Define stack input parameters.
   #
   parameters:
-    KeyPairName: 'bluefineng'
+    KeyPairName: 'cloudpack'
 
   #
   # Define stack capabilities required.

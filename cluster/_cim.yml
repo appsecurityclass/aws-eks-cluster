@@ -3,7 +3,7 @@ stack:
   name: eks-cluster # Note: Update this with your stack name
   template:
     file: cluster.stack.yml
-    bucket: cim-stack-artifacts # Note: Update this with your bucket name.  Stacks are uploaded here prior to deployment.'
+    bucket: cloudpack-artifacts-cr # Note: Update this with your bucket name.  Stacks are uploaded here prior to deployment.'
 
   #
   # Define stack input parameters.
